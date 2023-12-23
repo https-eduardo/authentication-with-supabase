@@ -1,9 +1,9 @@
-import { Inject, Injectable, Scope } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { Request } from 'express';
 import { REQUEST } from '@nestjs/core';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-@Injectable({ scope: Scope.REQUEST })
+@Injectable()
 export class SupabaseService {
   private client: SupabaseClient;
 
@@ -14,10 +14,9 @@ export class SupabaseService {
 
     this.client = createClient(
       process.env.SUPABASE_URL,
-      process.env.SUPABASE_KEY,
+      process.env.SUPABASE_SECRET_KEY,
       { auth: { autoRefreshToken: true, detectSessionInUrl: false } },
     );
-
     return this.client;
   }
 }
