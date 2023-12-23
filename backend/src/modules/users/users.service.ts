@@ -8,9 +8,10 @@ export class UsersService {
   constructor(private readonly supabase: SupabaseService) {}
 
   async create(createUserDto: CreateUserDto) {
-    const { data, error } = await this.supabase
-      .getClient()
-      .auth.signUp(createUserDto);
+    const { data, error } = await this.supabase.getClient().auth.signUp({
+      ...createUserDto,
+      options: { emailRedirectTo: process.env.SIGNUP_REDIRECT_URL },
+    });
 
     if (error) throw new HttpException(error.message, error.status);
 
