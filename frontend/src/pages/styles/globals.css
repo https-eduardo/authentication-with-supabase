@@ -43,3 +43,12 @@ form h2.title {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
+
+form .link-span {
+  color: var(--text-color);
+  text-align: center;
+}
+
+form .link-span .link {
+  color: var(--primary-color);
+}

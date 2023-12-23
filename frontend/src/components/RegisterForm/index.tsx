@@ -43,7 +43,6 @@ export function RegisterForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(values),
-        credentials: "include",
       });
       setButtonDisabled(false);
 
