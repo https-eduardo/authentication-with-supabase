@@ -1,0 +1,34 @@
+button {
+  cursor: pointer;
+}
+
+button.primary, button[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--bg2-color);
+  font-weight: 600;
+}
+
+input, button {
+  padding: 1rem;
+  background-color: var(--bg2-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+label, input, button {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+input {
+  border: 1px solid var(--border-color);
+  outline: none !important;
+}
+input:focus {
+  border: 1px solid var(--primary-color);
+}
+
+label {
+  font-weight: 600;
+}
