@@ -10,8 +10,6 @@ import {
 import { AuthService } from './auth.service';
 import { AuthLoginDto } from './dto/auth-login.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
-import { JwtUserPayload } from 'src/common/types/jwt-user-payload';
-import { UserPayload } from 'src/common/decorators/user-payload.decorator';
 import { Request, Response } from 'express';
 
 @Controller('auth')
@@ -26,8 +24,8 @@ export class AuthController {
     const { access_token, refresh_token } =
       await this.service.login(authLoginDto);
 
-    res.cookie('access_token', access_token);
-    res.cookie('refresh_token', refresh_token);
+    res.cookie('access_token', access_token, { httpOnly: true });
+    res.cookie('refresh_token', refresh_token, { httpOnly: true });
   }
 
   @Post('logout')
