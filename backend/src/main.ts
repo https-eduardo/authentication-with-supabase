@@ -11,7 +11,11 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
+  app.enableCors({
+    origin: ['http://localhost:3000', 'http://localhost:8080'],
+    credentials: true,
+  });
   app.use(cookieParser());
-  await app.listen(3000);
+  await app.listen(process.env.PORT ?? 3333);
 }
 bootstrap();
