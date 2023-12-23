@@ -26,7 +26,7 @@ export class UsersController {
   @Get('me')
   @UseGuards(JwtAuthGuard)
   async me(@UserPayload() user: JwtUserPayload) {
-    return await this.service.findOne(user.id);
+    return await this.service.findOne(user.sub);
   }
 
   @Patch('me')
@@ -35,12 +35,12 @@ export class UsersController {
     @UserPayload() user: JwtUserPayload,
     @Body() updateUserDto: UpdateUserDto,
   ) {
-    return await this.service.updateOne(user.id, updateUserDto);
+    return await this.service.updateOne(user.sub, updateUserDto);
   }
 
   @Delete('me')
   @UseGuards(JwtAuthGuard)
   async deleteOwnAccount(@UserPayload() user: JwtUserPayload) {
-    return await this.service.deleteOne(user.id);
+    return await this.service.deleteOne(user.sub);
   }
 }
