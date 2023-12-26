@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  HttpCode,
   Post,
   Req,
   Res,
@@ -18,6 +19,7 @@ export class AuthController {
   constructor(private readonly service: AuthService) {}
 
   @Post()
+  @HttpCode(200)
   @ApiOperation({ summary: 'Sign in' })
   @ApiResponse({
     status: 200,
@@ -35,6 +37,7 @@ export class AuthController {
   }
 
   @Post('logout')
+  @HttpCode(200)
   @UseGuards(JwtAuthGuard)
   @ApiCookieAuth()
   @ApiOperation({ summary: 'Sign out' })
